@@ -18,9 +18,9 @@
 
   const getSavedTheme = () => {
     try {
-      return localStorage.getItem(THEME_KEY) || "default";
+      return localStorage.getItem(THEME_KEY) || "scifi";
     } catch (e) {
-      return "default";
+      return "scifi";
     }
   };
 
