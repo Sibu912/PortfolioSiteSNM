@@ -375,10 +375,39 @@ section {
   margin-right: 5px;
   color: #149ddd;
   line-height: 0;
+  transition: 0.5s;
+}
+
+.about .content ul li:hover i {
+  background: #149ddd;
+  color: #fff;
+  padding: 6px;
+  border-radius: 50%;
 }
 
 .about .content p:last-child {
   margin-bottom: 0;
+}
+
+.about .content {
+  transition: 0.3s;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.about .content:hover {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.5);
+}
+
+.about .col-lg-4 img {
+  transition: 0.3s;
+  border-radius: 8px;
+}
+
+.about .col-lg-4 img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
 /*--------------------------------------------------------------
@@ -528,6 +557,18 @@ section {
   top: 0;
   background: #fff;
   border: 2px solid #1f5297;
+}
+
+.resume .resume-item {
+  transition: 0.3s;
+  border-radius: 8px;
+  padding-right: 15px;
+}
+
+.resume .resume-item:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.5);
+  border-left-color: #149ddd;
 }
 
 /*--------------------------------------------------------------
@@ -844,6 +885,21 @@ body.scifi-mode .portfolio #portfolio-flters li.filter-active {
 .contact .info .phone:hover i {
   background: #149ddd;
   color: #fff;
+}
+
+.contact .info .address,
+.contact .info .email,
+.contact .info .phone {
+  transition: 0.3s;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.contact .info .address:hover,
+.contact .info .email:hover,
+.contact .info .phone:hover {
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.5);
 }
 
 .contact .php-email-form {
@@ -1309,6 +1365,14 @@ body.scifi-mode .resume .resume-item em{
   font-size:24px;
   line-height:0;
 }
+
+#pricing .pricing-card:hover .pricing-icon {
+  background: #fff;
+}
+
+#pricing .pricing-card:hover .pricing-icon i {
+  color: #149ddd;
+}
 #pricing .pricing-card .pricing-body{
   margin-left:80px;
 }
@@ -1329,24 +1393,75 @@ body.scifi-mode #pricing .pricing-card .pricing-icon i{
 }
 
 /* --- Pricing cards: equal-size columns, expandable for longer content --- */
-/* Make each pricing column a flex container so the card can stretch to the tallest in the row */
 #pricing .row.g-4 > [class^="col"],
 #pricing .row.g-4 > [class*=" col"]{
   display: flex;
 }
 
-/* Ensure cards fill the available column height (and therefore match each other) */
 #pricing .pricing-card{
   flex: 1 1 auto;
   height: 100%;
-  min-height: 420px; /* consistent base size */
   display: flex;
   flex-direction: column;
+  max-height: 200px;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  position: relative;
+  cursor: pointer;
+  padding: 20px 20px 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
-/* Allow content area to expand and push footer elements down if added later */
+#pricing .pricing-card.expanded{
+  max-height: none;
+  cursor: default;
+}
+
 #pricing .pricing-card .pricing-body{
   flex: 1 1 auto;
+}
+
+#pricing .pricing-card .pricing-fade{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(transparent, #fff);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+body.scifi-mode #pricing .pricing-card .pricing-fade{
+  background: linear-gradient(transparent, #050610);
+}
+
+#pricing .pricing-card.expanded .pricing-fade{
+  opacity: 0;
+}
+
+#pricing .pricing-card .pricing-toggle{
+  display: block;
+  position: relative;
+  z-index: 2;
+  margin-top: 8px;
+}
+
+body.scifi-mode #pricing .pricing-card{
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(110, 243, 255, 0.14);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 24px 70px rgba(0,0,0,0.45);
+  border-radius: 18px;
+}
+
+body.scifi-mode #pricing .pricing-card .pricing-toggle{
+  color: rgba(110,243,255,0.9);
+}
+
+body.scifi-mode #pricing .pricing-card .pricing-toggle:hover{
+  color: rgba(110,243,255,1);
 }
 
 /* CV Download button (sidebar) */
